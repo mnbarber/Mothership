@@ -6,6 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const logger = require('morgan');
+const path = require('path')
 
 // Import routers
 const authRouter = require('./controllers/auth');
