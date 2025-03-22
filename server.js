@@ -32,12 +32,17 @@ const corsOpts = {
 app.use(cors(corsOpts));
 app.use(express.json());
 app.use(logger('dev'));
+app.use(express.static(path.resolve(__dirname, './client/build')));
 
 // Routes
 app.use('/auth', authRouter);
 app.use('/test-jwt', testJwtRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+});
 
 // Start the server and listen on port 3000
 app.listen(3000, () => {
