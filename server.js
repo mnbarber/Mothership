@@ -22,14 +22,7 @@ mongoose.connection.on('connected', () => {
 });
 
 // Middleware
-const corsOpts = {
-  origin: '*',
-  credentials: true,
-  methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
-  allowedHeaders: ['Content-Type'],
-  exposedHeaders: ['Content-Type']
-};
-app.use(cors(corsOpts));
+app.use(cors());
 app.use(express.json());
 app.use(logger('dev'));
 app.use(express.static(path.resolve(__dirname, './client/build')));
