@@ -37,6 +37,13 @@ app.use(express.json());
 app.use(logger('dev'));
 app.use(express.static(path.resolve(__dirname, './client/build')));
 
+app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 // Routes
 app.use('/auth', authRouter);
 app.use('/test-jwt', testJwtRouter);
