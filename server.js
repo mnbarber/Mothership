@@ -22,7 +22,7 @@ mongoose.connection.on('connected', () => {
 });
 
 let corsOptions = {
-  origin: ['https://mothership-backend-b502f96270d5.herokuapp.com']
+  origin: ['https://mothership-0517ed1a863d.herokuapp.com']
 }
 
 // Middleware
