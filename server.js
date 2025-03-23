@@ -22,7 +22,7 @@ mongoose.connection.on('connected', () => {
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: 'https://mothership-backend-b502f96270d5.herokuapp.com', credentials: true }));
 app.use(express.json());
 app.use(logger('dev'));
 
