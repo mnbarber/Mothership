@@ -21,8 +21,12 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
+let corsOptions = {
+  origin: ['https://mothership-backend-b502f96270d5.herokuapp.com']
+}
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(logger('dev'));
 app.use(express.static(path.resolve(__dirname, './client/build')));
