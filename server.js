@@ -6,7 +6,6 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const logger = require('morgan');
-const path = require('path')
 
 // Import routers
 const authRouter = require('./controllers/auth');
@@ -22,8 +21,13 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
+const corsOptions = {
+  origin: 'https://mothership-backend-b502f96270d5.herokuapp.com/',
+  optionsSuccessStatus: 200
+}
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(logger('dev'));
 app.options('*', cors());
